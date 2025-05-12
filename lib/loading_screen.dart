@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 
 
 class LoadingScreen extends StatefulWidget {
@@ -9,8 +10,17 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+
+   void getLocation()async {
+    await Geolocator.checkPermission();
+   await Geolocator.requestPermission();
+    Position position = await Geolocator.getCurrentPosition(
+      desiredAccuracy: LocationAccuracy.high,
+    );
+    }
   @override
   Widget build(BuildContext context) {
+   
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 38, 36, 36),
@@ -58,7 +68,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
                 ),
               ),
               GestureDetector(
-                onTap: (){},
+                onTap: () {
+                  getLocation();
+                },
                 child: Container(
                   margin: EdgeInsets.all(30),
                   height: 50,
