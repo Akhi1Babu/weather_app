@@ -232,7 +232,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            backgroundColor,
+            Color.fromARGB(255, 38, 36, 36),
             backgroundColor.withOpacity(0.8),
           ],
         ),
